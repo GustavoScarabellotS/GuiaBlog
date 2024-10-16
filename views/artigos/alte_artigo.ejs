@@ -1,0 +1,50 @@
+<%- include ("../partials/header.ejs") %> 
+<%- include ("../partials/navbar.ejs") %> 
+<div class="container"> 
+ <hr> 
+ <div class="card"> 
+ <div class="card-header"> 
+ <h2>Alterar Artigo</h2> 
+ </div> 
+ <div class="card-body"> 
+ <form method="POST" action="/updateartigo"> 
+
+ <input class="form-control" type="text" name="titulo" placeholder="Defina o título do artigo" value="<%= artigo.titulo %>"  ><br> 
+
+ <textarea class="form-control" placeholder="Escreva o artigo aqui!" name="body" id="artigo"> <%= artigo.body %> </textarea><br> 
+  
+ <input type="hidden" name="id" value="<%= artigo.id_artigo %>">
+ 
+ <label>Categoria</label> 
+
+ <select name="categoria" class="form-control"> 
+    <option value="">Selecione Categoria</option> 
+
+     <% categoria.forEach((categ)=>{ %>
+      <% if(categ.id_categoria == artigo.categoria_id){ %>
+        <option value="<%= categ.id_categoria %>" selected><%= categ.titulo %></option> 
+      <% }else { %>
+         <option value="<%= categ.id_categoria %>"><%= categ.titulo %></option> 
+     <%  } %>
+ <% }) %>
+
+ </select> 
+ <br> 
+ <br> 
+ <button class="btn btn-success">Alterar</button> 
+ </form> 
+ </div> 
+ </div> 
+</div> 
+<%- include ("../partials/footer.ejs") %> 
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+ tinymce.init({
+ language: 'pt_BR',
+ selector: "#artigo",
+ plugins: [
+ 'advlist autolink link image lists print preview hr searchreplace'
+ + ' wordcount fullscreen insertdatetime media save table paste emoticons'
+ ]
+ })
+</script>

@@ -1,0 +1,29 @@
+<%- include ("../partials/header.ejs") %> 
+<%- include ("../partials/navbar1.ejs")
+%>
+<style>
+  div {
+    max-width: 300px;
+  }
+  .text-input{
+  width:100px
+}
+</style>
+<div class="container" align="center">
+  <hr />
+  <div class="card mt-5" style="max-width: 100">
+    <div class="card-header">
+      <h2>Login de Usuário</h2>
+    </div>
+    <div class="card-body">
+      <form action="/user/loginuser" method="POST">
+        <label>Login Usuário - Email</label>
+        <input class="form-control" name="login" type="email" placeholder="" required /><br />
+         <label>Senha</label>
+        <input class="form-control" name="senha" type="senha"  required/><br />
+        <button type="submit" class="btn btn-success btn-block" size="5">Logar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include ("../partials/footer.ejs") %>
